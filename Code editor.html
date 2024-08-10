@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'poppins', sans-serif;
+            }
+            body{
+                background-color: #454545;
+                color: #fff;
+            }
+            .container{
+                width: 100%;
+                height: 95vh;
+                padding: 20px;
+                display: flex;
+                gap: 20px;
+            }
+            .left, .right{
+                flex-basis: 50%;
+                padding: 10px;
+            }
+            .left{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .left .box{
+                height: 25vh;
+            }
+            textarea{
+                width: 100%;
+                height: 100%;
+                background-color: #1f1f1f;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                outline: none;
+                font-size: 18px;
+            }
+            iframe{
+                width: 100%;
+                height: 100%;
+                background-color: #fff;
+                border: none;
+                outline: none;
+            }
+            label i{
+                margin: 0 10px;
+            }
+            label{
+                display: flex;
+                align-items: center;
+                background-color: #000;
+                height: 30px;
+            }
+            .fa-solid, .fa-brands{
+                color: aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left">
+                <div class="box">
+                    <label for=""><i class="fa-brands fa-html5"></i> HTML</label>
+                    <textarea id="html-code" onkeyup="run()"></textarea>
+                </div>
+
+                <div class="box">
+                    <label for=""><i class="fa-brands fa-css3-alt"></i> CSS</label>
+                    <textarea id="css-code" onkeyup="run()"></textarea>
+                </div>
+
+                <div class="box">
+                    <label for=""><i class="fa-brands fa-js"></i> JavaScript</label>
+                    <textarea id="js-code" onkeyup="run()"></textarea>
+                </div>
+            </div>
+            <div class="right">
+                <label for=""><i class="fa-solid fa-play"></i> Output</label>
+                <iframe id="output"></iframe>
+            </div>
+        </div>
+
+        <script>
+            function run(){
+                let htmlCode = document.getElementById("html-code").value;
+                let cssCode = document.getElementById("css-code").value;
+                let jsCode = document.getElementById("js-code").value;
+                let outPut = document.getElementById("output");
+
+                outPut.contentDocument.body.innerHTML = htmlCode + "<style>" + cssCode + "</style>";
+                outPut.contentWindow.eval(jsCode);
+            }
+        </script>
+    </body>
+</html>
+
+<!-- <button onclick = "run(this)">click</button>
+button{
+background: red;
+color: white;
+padding: 10px 25px;
+font-size: 18px;
+border-radius: 5px;
+border: none;
+}
+
+function run(x){
+
+x.style.background: "black";
+
+} -->
